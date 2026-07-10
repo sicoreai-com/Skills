@@ -45,6 +45,10 @@ Why teams like it:
   skills themselves, so the same mistake isn't made twice.
 - 🧑‍⚖️ **Maker/checker built in** — every implementation is verified by an
   independent agent with a reject-by-default stance before a PR exists.
+- 📜 **Specs as a first-class citizen** — every change ships with its spec in
+  the same PR, so the system's evolution stays trackable and explainable:
+  living documentation that agents and developers collaborate through, not
+  stale docs bolted on later.
 - 🚦 **Humans own the judgment calls** — merges, rejections, CI approval, and
   the emergency STOP are always yours.
 - 🧾 **Full cost transparency** — every stage books its token spend onto the
