@@ -1,4 +1,4 @@
-# Engineering Loop
+# AskLoop — the Engineering Loop
 
 A set of [Claude Code](https://claude.com/claude-code) skills that runs an
 autonomous, **human-gated** engineering pipeline on top of a GitHub Projects

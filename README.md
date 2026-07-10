@@ -23,7 +23,7 @@ and when it makes a mistake, you fix the *skill*, not the chat.
 
 | Skill | What it does | Docs |
 |---|---|---|
-| **[engineering-loop](skills/engineering-loop/)** | A complete human-gated engineering pipeline on a GitHub Projects board: agents triage issues, implement them behind a maker/checker gate, run CI with verifiable deliverables, learn from human rejections, and publish approved releases — humans keep every merge, approval, and emergency stop. 8 skills + templates. | [README](skills/engineering-loop/README.md) |
+| **[ask-loop](skills/ask-loop/)** | A complete human-gated engineering pipeline on a GitHub Projects board: agents triage issues, implement them behind a maker/checker gate, run CI with verifiable deliverables, learn from human rejections, and publish approved releases — humans keep every merge, approval, and emergency stop. 8 skills + templates. | [README](skills/ask-loop/README.md) |
 
 > More skills are on the way. Watch the repo to catch new releases.
 
@@ -56,7 +56,7 @@ Why teams like it:
 git clone https://github.com/sicoreai-com/Skills.git
 
 # Install a skill suite into your project
-cp -r Skills/skills/engineering-loop/skills/* your-repo/.claude/skills/
+cp -r Skills/skills/ask-loop/skills/* your-repo/.claude/skills/
 
 # Then follow that skill's README for configuration
 ```
@@ -69,7 +69,7 @@ Open your project in Claude Code and the skills appear as slash commands
 ```
 Skills/
 ├── skills/                  # one folder per skill (or suite)
-│   └── engineering-loop/
+│   └── ask-loop/
 │       ├── README.md        # setup & usage guide
 │       ├── skills/          # the SKILL.md playbooks
 │       └── templates/       # config & control files to copy into your repo
