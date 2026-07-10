@@ -3,7 +3,7 @@
 # 🛠️ SicoreAI Skills
 
 **Open-source skills for [Claude Code](https://claude.com/claude-code) —
-teach your agent how your team ships software.**
+build your relentless development with loop engineering.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-skills-d97757.svg)](https://docs.claude.com/en/docs/claude-code)
