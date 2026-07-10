@@ -57,6 +57,11 @@ Why teams like it:
   the emergency STOP are always yours.
 - 🧾 **Full cost transparency** — every stage books its token spend onto the
   issue it worked on; one command aggregates the bill.
+- 🧠 **A training corpus for free** — every internal failure and its
+  correction (verifier rejections, CI failure logs, sweeper fixes, human
+  rejection reasons, retrospective lessons) is logged on the GitHub issues as
+  a natural by-product of the loop: a growing, structured dataset of
+  mistake → fix pairs that's valuable for model training and fine-tuning.
 
 ## 🔄 Issue lifecycle — and where humans decide
 
