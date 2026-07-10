@@ -52,21 +52,23 @@ Driven off the GitHub Project named in `loop-config.md`. All skills share the
   git-ignored, never pushed.
 - `COST-REPORT.md` — cost-report output.
 
-## Scheduling (example cadence)
+## Scheduling (recommended cadence)
 
 ```
-/loop 30m /implementation
-/loop 1h  /triage
-/loop 2h  /ci
-/loop 1h  /ci-sweeper
-/loop 12h /retrospective
-/loop 12h /ci-retrospective
-/loop 24h /publish
-/loop 7d  /cost-report
+/loop 4h  /triage             # 6/day — keep the queue fresh; stagger ahead of implementation
+/loop 6h  /implementation     # 4/day — core delivery loop; yields to CI via STATUS.md
+/loop 12h /ci                 # 2/day — main-branch validation, matches human merge rhythm
+/loop 6h  /ci-sweeper         # 4/day — fix a failed CI within 6 hours
+/loop 24h /retrospective      # 1/day — consolidated learning from human rejections
+/loop 24h /ci-retrospective   # 1/day — distill escalation lessons daily
+/loop 24h /publish            # 1/day — fixed daily release window
+/loop 7d  /cost-report        # weekly — token-budget review
 ```
 
-Skipped rounds (empty queue, STATUS gate) are normal and must exit in a few
-lines — early-exit cheap, act expensive.
+Stagger start times (triage a couple of hours before implementation). Use
+`/schedule` (cloud) instead of `/loop` when the cadence must survive the
+session closing. Skipped rounds (empty queue, STATUS gate) are normal and
+must exit in a few lines — early-exit cheap, act expensive.
 
 ## Loop-wide rules
 

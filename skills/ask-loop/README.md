@@ -102,16 +102,34 @@ Each stage is a slash command — run them manually while you build trust:
 /cost-report       # what did it all cost?
 ```
 
-…then put them on a cadence with Claude Code's `/loop` command
-(see `templates/LOOP.md` for a starting cadence):
+…then put them on a cadence with Claude Code's `/loop` command.
 
-```
-/loop 30m /implementation
-/loop 1h  /triage
-/loop 2h  /ci
-```
+### Recommended cadence
 
-Skipped rounds (empty queue, gate set) are normal and exit in a few lines.
+| Loop command | Rounds/day | Why this cadence |
+|---|---|---|
+| `/loop 4h /triage` | 6 | Keeps the implementation queue fresh; runs more often than implementation, and staggered from it |
+| `/loop 6h /implementation` | 4 | The core delivery loop; checks `STATUS.md` before starting so it yields to a running CI |
+| `/loop 12h /ci` | 2 | Main-branch validation, paced to match the human merge rhythm on workdays |
+| `/loop 6h /ci-sweeper` | 4 | Starts fixing a failed CI within 6 hours, clearing blockages quickly |
+| `/loop 24h /retrospective` | 1 | Rejections come from human review — one consolidated retrospective per day is enough |
+| `/loop 24h /ci-retrospective` | 1 | Escalations wait on human handling; distill the lessons once a day |
+| `/loop 24h /publish` | 1 | A fixed daily release window that archives approved CI artifacts |
+| `/loop 7d /cost-report` | weekly | Weekly cost report to support token-budget reviews |
+
+Tips:
+
+- **Stagger the start times** — kick off triage a couple of hours before
+  implementation so each implementation round consumes a freshly triaged
+  queue, and don't start every loop in the same minute.
+- **Skipped rounds are free** — an empty queue or a `STATUS.md` gate exits in
+  a few lines, so err on the side of more frequent rounds rather than fewer.
+- **Session vs cloud** — `/loop` runs while your Claude Code session is open;
+  for cadences that must survive the terminal closing (the daily/weekly
+  ones especially), use `/schedule` to run them as cloud agents instead.
+- **Tune to your merge rhythm** — the loop can only move as fast as its human
+  gates; if PRs are reviewed once a day, faster implementation rounds just
+  queue up work.
 
 ### What the human does
 
