@@ -58,6 +58,43 @@ Why teams like it:
 - 🧾 **Full cost transparency** — every stage books its token spend onto the
   issue it worked on; one command aggregates the bill.
 
+## ✅ Prerequisites
+
+Before installing ask-loop, have these three things in place:
+
+1. **Connect Claude Code to GitHub.** Claude Code drives everything through
+   the GitHub CLI (`gh`), so it must be authenticated with access to your
+   repository and organization project. Just ask Claude Code — it will walk
+   you through the detailed procedure. Note: granting the required org
+   permissions typically needs your **org admin's** help.
+
+2. **A GitHub repository** for your source code — use an existing repo or
+   create a new one. The skills, templates, and loop state files live inside
+   it.
+
+3. **A GitHub Project (v2)** where issues track every change. The project
+   must meet the requirements below — and here's a hint: you can simply ask
+   Claude Code to create the project with these requirements for you.
+
+   **Issue types** (repository/org setting): `Feature`, `Bug`, `Task`
+
+   **Status options**: `Create`, `Open`, `Pending merge`, `Merged`,
+   `Resolved`, `Closed`, `Feedback`, `Rejected`, `Review`, `Approved`,
+   `Failed`, `Escalation`
+
+   **Fields**:
+
+   | Field | Kind | Notes |
+   |---|---|---|
+   | Title, Issue body, Type, Issue author, Assignees, Updated | built-in | plus the project activity log & issue timeline |
+   | `Priority` | built-in single select | `Urgent` / `High` / `Medium` / `Low` |
+   | `Effort` | built-in single select | `Low` / `Medium` / `High` |
+   | `Status` | single select | the 12 options above |
+   | `Estimate Token`, `Budget Token` | number | planning fields |
+   | `Analysis Token Usage`, `Implementation Token Usage`, `Retrospective Token Usage`, `CI Token Usage` | number | per-stage cost accounting, written by the skills |
+   | `Detailed Description` | text | human ↔ agent handoff (rejection reasons, CI summaries) |
+   | `Failure Log` | text | CI failure evidence for the sweeper |
+
 ## 🚀 Quick start
 
 ```bash
