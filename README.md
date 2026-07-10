@@ -39,6 +39,12 @@ Open ──► triage ──► queue ──► implement ──► PR ──►
                                              (improves skills)
 ```
 
+> [!TIP]
+> **Putting the system to work takes exactly one action: write a GitHub
+> issue with clear requirements and set it to `Open`.** From there the loop
+> takes over — triage, implementation, PR, CI, publish — and only comes back
+> to you for the decisions that matter.
+
 Why teams like it:
 
 - 🔁 **Self-improving** — human rejections feed retrospectives that edit the
