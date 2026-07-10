@@ -58,6 +58,51 @@ Why teams like it:
 - 🧾 **Full cost transparency** — every stage books its token spend onto the
   issue it worked on; one command aggregates the bill.
 
+## 🔄 Issue lifecycle — and where humans decide
+
+Every piece of work is a GitHub issue moving through a **binding status
+machine**. Agents move issues between statuses as they work; the transitions
+marked 🧑 are yours and yours alone — the loop stops and waits for you there.
+
+**Feature/Bug issues** (the work you want done):
+
+```
+Create ─► Open ─► Pending merge ─🧑─► Merged ─► Resolved ─► Closed      the happy path
+                       │                agent CI ▲      publish ▲
+          ▲            🧑
+          │            ▼
+          └───────  Rejected      (retrospective learns from your reason, reopens)
+Create ─► Open ─🧑?─► Feedback ─🧑─► Open      (triage found it ambiguous; you clarify)
+```
+
+- `Open → Pending merge` — agent implemented it and opened a PR
+- 🧑 `Pending merge → Merged` — **you** reviewed and merged the PR
+- 🧑 `Pending merge → Rejected` — **you** rejected it (reason goes in
+  `Detailed Description`; the retrospective skill turns it into a skill fix
+  and reopens the issue)
+- 🧑 `Feedback → Open` — **you** answered triage's questions on the issue
+
+**Task issues** (one per CI run, created by the CI skill):
+
+```
+Open ─► Review ─🧑─► Approved ─► Closed                        CI green on first try
+Open ─► Failed ─► Pending merge ─🧑─► Review ─🧑─► Approved ─► Closed    sweeper fixed it, you merged
+Open ─► Failed ─► Pending merge ─🧑─► Rejected ─► Failed       you rejected the fix; ci-retrospective learns, sweeper retries
+Open ─► Failed ─► … ─► Escalation 🚨                           fix cap reached; STOP written, humans take over
+```
+
+### 🧑 Your four duties
+
+| When you see | What you do |
+|---|---|
+| Feature/Bug or Task in **Pending merge** | Review the PR. Merge → set Feature/Bug to `Merged`, Task to `Review`. Reject → set `Rejected` **and write the reason into `Detailed Description`** — that text is what the retrospective learns from. |
+| Feature/Bug in **Feedback** | Triage found the issue too ambiguous to implement. Answer its questions in the issue comments, then set the issue back to `Open`. |
+| Task in **Review** | A CI run passed and awaits sign-off. Check the run folder (`CI/<timestamp>/` — summary, logs, `deliverables/MANIFEST.md`), then set `Approved` (publish picks it up) or `Rejected` with a reason. |
+| Task in **Escalation** (+ `STOP` in `STATUS.md`) 🚨 | The CI sweeper hit its retry cap and halted the loop. Fix the CI problem, put your solution into `Detailed Description`, set the ticket to `Rejected` (so ci-retrospective learns from it), and **remove the `STOP` line** — only humans may remove a STOP. |
+
+Everything else — prioritizing, coding, verifying, running CI, sweeping
+failures, publishing, cost accounting — the agents handle.
+
 ## ✅ Prerequisites
 
 Before installing ask-loop, have these three things in place:
