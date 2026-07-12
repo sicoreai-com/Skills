@@ -165,6 +165,19 @@ cp -r Skills/skills/ask-loop/skills/* your-repo/.claude/skills/
 Open your project in Claude Code and the skills appear as slash commands
 (`/triage`, `/implementation`, `/ci`, …).
 
+## 🎛️ Potential customizations
+
+The skills ship with sensible, project-agnostic defaults — and because a
+skill is just a markdown playbook, tailoring one is an edit, not a rewrite.
+Two you'll most likely want to adapt:
+
+- **CI skill** — extend it with your product-specific validations (test
+  suites, linters, security scans, build checks) so a green run means what
+  *your* team needs it to mean.
+- **Publish skill** — out of the box it simply publishes to a folder. Update
+  it to match your product's actual release process, e.g. pushing to a
+  package registry, container registry, or deployment pipeline.
+
 ## 🗂️ Repository layout
 
 ```
